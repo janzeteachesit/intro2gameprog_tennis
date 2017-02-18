@@ -26,15 +26,17 @@ var ballSpeedX = 2; //// 06
 // save the canvas for dimensions, and its 2d context for drawing it //// 05
 var canvas, canvasContext; //// 05
 
-canvas = document.getElementById('gameCanvas'); ////
-canvasContext = canvas.getContext('2d'); ////
+window.onload = function() {
+  canvas = document.getElementById('gameCanvas'); ////
+  canvasContext = canvas.getContext('2d'); ////
 
-// these next few lines set up our game logic and redner to happen times a second //// 05
-var framesPerSecond = 30; //// 05
-setInterval(function() { //// 05
-  moveEverything();  //// 05
-  drawEverything(); //// 05
-}, 1000/framesPerSecond); //// 05
+  // these next few lines set up our game logic and render to happen n times a second //// 05
+  var framesPerSecond = 30; //// 05
+  setInterval(function() { //// 05
+    moveEverything();  //// 05
+    drawEverything(); //// 05
+  }, 1000/framesPerSecond); //// 05
+}
 
 function moveEverything() {   //// 06
   ballX += ballSpeedX; // move the ball to the right by a small amount  //// 06
@@ -52,6 +54,8 @@ function drawEverything() { ////
   canvasContext.arc(ballX, ballY, 10, 0, Math.PI*2, true); ////
   canvasContext.fill(); ////
 } ////
+
+  
 
 
 
