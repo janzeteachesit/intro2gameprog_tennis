@@ -3,7 +3,7 @@
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-type">
     <meta content="utf-8" http-equiv="encoding">
-    <script src="script.js"></script>
+    <!-- script src="script.js"></script -->
   </head>
 <!-- 
 As long	as	it's	between	the	start and	end marks	then it's	a	valid comment	and	won't	show up on the page. But people can View	Source in	their	browser	and	see	it! 
@@ -11,6 +11,44 @@ As long	as	it's	between	the	start and	end marks	then it's	a	valid comment	and	
 <body>
 <canvas id="gameCanvas" width="1200" height="900"></canvas><!-- //// -->
   
+  <script>
+  // variables to keep track of ball position //// 05
+var ballX = 75, ballY = 75; //// 05
+var ballSpeedX = 2; //// 06
+
+// save the canvas for dimensions, and its 2d context for drawing it //// 05
+var canvas, canvasContext; //// 05
+
+window.onload = function() {
+  canvas = document.getElementById('gameCanvas'); ////
+  canvasContext = canvas.getContext('2d'); ////
+
+  // these next few lines set up our game logic and render to happen n times a second //// 05
+  var framesPerSecond = 30; //// 05
+  setInterval(function() { //// 05
+    moveEverything();  //// 05
+    drawEverything(); //// 05
+  }, 1000/framesPerSecond); //// 05
+}
+
+function moveEverything() {   //// 06
+  ballX += ballSpeedX; // move the ball to the right by a small amount  //// 06
+} //// 06
+
+function drawEverything() { ////
+  // console.log("ballX is now: " + ballX)
+  // clear the game view by filling it with black
+  canvasContext.fillStyle = '#222'; ////
+  canvasContext.fillRect(0, 0, canvas.width, canvas.height); ////
   
+  // draw a white circle
+  canvasContext.fillStyle = '#fff'; ////
+  canvasContext.beginPath(); ////
+  canvasContext.arc(ballX, ballY, 10, 0, Math.PI*2, true); ////
+  canvasContext.fill(); ////
+} ////
+
+
+  </script>
   </body>
 </html>
